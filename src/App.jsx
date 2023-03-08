@@ -8,13 +8,15 @@ import imgIconTwitter from "./assets/icon-twitter.png";
 import imgStoryAvatar from "./assets/story-avatar.png";
 import imgIconQuote from "./assets/icon-quote.png";
 
+import sections from "./content/story";
 import { RxHamburgerMenu } from "react-icons/rx";
+import StorySection from "./StorySection";
 
 function App() {
   return (
     <div className="w-full bg-slate-50">
       {/* header container */}
-      <div
+      <header
         style={{
           backgroundImage: `url(${imgHeroDesktop})`,
           backgroundSize: "cover",
@@ -39,11 +41,11 @@ function App() {
         <div className="text-white text-6xl drop-shadow-md font-bold uppercase">
           Stories of freedom
         </div>
-      </div>
+      </header>
 
       {/* Content container */}
       <div className="flex flex-col gap-8">
-        <section className="mx-64 p-4 pt-8 gap-10 flex flex-col">
+        <section className="mx-64 p-2 pt-8 gap-10 flex flex-col">
           <div className="flex justify-center gap-2 w-full">
             <a href="" className="">
               <img className="w-6" src={imgIconWhatsapp} alt="whatsapp" />
@@ -55,7 +57,7 @@ function App() {
               <img className="w-6" src={imgIconTwitter} alt="twitter" />
             </a>
           </div>
-          <div className="text-center text-yellow-800 font-bold text-xl px-10">
+          <div className="text-center text-yellow-800 font-bold text-xl px-16">
             Harley-Davidson riders on how motorcycles helped them find their
             purpose
           </div>
@@ -97,6 +99,15 @@ function App() {
             </span>
           </div>
         </section>
+
+        {sections.map((section) => (
+          <StorySection
+            key={section.title}
+            title={section.title}
+            paragraphs={section.paragraphs}
+            img={section.img}
+          />
+        ))}
       </div>
     </div>
   );
