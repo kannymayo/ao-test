@@ -8,15 +8,14 @@ export default function Sections({
   return sections.map((section, idx) => {
     if (childrenInjectedAfter !== undefined && idx === childrenInjectedAfter)
       return (
-        <>
+        <div key={section.title}>
           <StorySection
-            key={section.title}
             title={section.title}
             paragraphs={section.paragraphs}
             img={section.img}
           />
           {children}
-        </>
+        </div>
       );
     else
       return (
