@@ -6,13 +6,20 @@ import SectionLeading from "./sections/SectionLeading";
 import SectionQuote from "./sections/SectionQuote";
 import Sections from "./sections/SectionBody";
 import BannerParallaxed from "./sections/BannerParallaxed";
+import Footer from "./Footer";
 
 function App() {
   return (
-    <div className="w-full bg-slate-50">
+    <div
+      className="w-full bg-slate-50"
+      style={{
+        "--primary-color": "#D05800",
+        "--secondary-color": "#5C5646",
+      }}
+    >
       <Header />
       {/* Content container */}
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-8 pb-12">
         {/* Quote */}
         <SectionLeading />
         <SectionQuote />
@@ -21,6 +28,7 @@ function App() {
           <BannerParallaxed imgSrc={imgStoryBg} />
         </Sections>
       </div>
+      <Footer />
     </div>
   );
 }

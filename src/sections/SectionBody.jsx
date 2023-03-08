@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import StorySection from "./Section";
 
 export default function Sections({
@@ -8,14 +9,14 @@ export default function Sections({
   return sections.map((section, idx) => {
     if (childrenInjectedAfter !== undefined && idx === childrenInjectedAfter)
       return (
-        <div key={section.title}>
+        <Fragment key={section.title}>
           <StorySection
             title={section.title}
             paragraphs={section.paragraphs}
             img={section.img}
           />
           {children}
-        </div>
+        </Fragment>
       );
     else
       return (
