@@ -7,6 +7,25 @@ function Menu(props, ref) {
   useImperativeHandle(ref, () => ({
     openMenu: () => setIsOpen(true),
   }));
+
+  // disable scroll when menu is open, and compensate for scrollbar width
+  useEffect(() => {
+    if (isOpen) {
+      // set padding equal to scrollbar width
+      document.body.style.paddingRight = `${
+        window.innerWidth - document.body.clientWidth
+      }px`;
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+      document.body.style.paddingRight = 0;
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+      document.body.style.paddingRight = 0;
+    };
+  }, [isOpen]);
+
   return (
     <div
       className={`animate-backdrop pointer-events-auto fixed inset-0 bg-stone-900 opacity-90 ${

@@ -1,7 +1,5 @@
-/* app as scrolling container, to prevent scroll-bar related
-   content shift when modal backdrop is applied. kinda hacky */
 body {
-  overflow-y: hidden;
+  overflow-y: scroll;
 }
 
 .animate-backdrop {

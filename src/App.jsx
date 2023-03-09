@@ -12,7 +12,7 @@ function App() {
   return (
     <div
       // fixed height, so <App /> becomes the scrollable container
-      className="w-full bg-slate-50 h-[100dvh] overflow-y-scroll"
+      className="w-full bg-slate-50"
       style={{
         "--primary-color": "#D05800",
         "--secondary-color": "#5C5646",
