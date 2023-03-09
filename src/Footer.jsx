@@ -1,5 +1,6 @@
-import { Fragment } from "react";
-import logo from "./assets/logo-asiaone-flat.svg";
+import logoAsiaOneFlat from "./assets/logo-asiaone-flat.svg";
+import logoAsiaOneFragment from "./assets/logo-asiaone-fragment.svg";
+import logoClientFragment from "./assets/logo-client-fragment.png";
 
 export default function Footer() {
   const links = [
@@ -10,7 +11,16 @@ export default function Footer() {
   ];
   return (
     <footer>
-      <div className="bg-[var(--primary-color)] text-white flex flex-col items-center justify-center py-6 font-bold text-lg gap-4 tracking-wider">
+      <div
+        style={{
+          backgroundImage: `url(${logoAsiaOneFragment}), url(${logoClientFragment})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "contain, 30%",
+          backgroundBlendMode: "normal",
+          backgroundPosition: "right center, left center",
+        }}
+        className="bg-[var(--primary-color)] relative text-white flex flex-col items-center justify-center py-6 font-bold text-lg gap-4 tracking-wider"
+      >
         <span className="w-[20em] text-center">
           To know more about Harley-Davidson motorcycles and products
         </span>
@@ -21,16 +31,18 @@ export default function Footer() {
       <div className="bg-black pt-12 pb-6 text-[var(--primary-color)] flex flex-col items-center justify-center gap-6">
         {/* Logo */}
         <div className="text-4xl text-white">
-          <img src={logo} alt="" className="" />
+          <img src={logoAsiaOneFlat} alt="" className="" />
         </div>
         {/* Links */}
         <div className="flex">
-          {links.map((item, idx) => (
-            <Fragment key={item}>
-              {/* leading separator for non-first */}
-              {idx !== 0 && <div className="border border-white my-1.5"></div>}
-              <span className="px-6">{item}</span>
-            </Fragment>
+          {links.map((item) => (
+            <span
+              key={item}
+              // separator between links
+              className="after:border after:mx-6 after:inline-block after:h-1/2 last:after:content-none"
+            >
+              {item}
+            </span>
           ))}
         </div>
         {/* Legal */}

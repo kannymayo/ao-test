@@ -9,6 +9,7 @@ export default function Header() {
       style={{
         backgroundImage: `url(${imgHeroDesktop})`,
         backgroundSize: "cover",
+        backgroundPosition: "center top",
       }}
       className="h-[50vh] relative flex items-center justify-center flex-col gap-6 border-b-8 border-zinc-200"
     >
@@ -24,10 +25,21 @@ export default function Header() {
 
       {/* Logo */}
       <div className="w-26">
-        <img src={imgLogoClient} alt="logo-client" />
+        <img
+          style={{
+            filter: "drop-shadow(0px 0px 3px rgb(0 0 0 /100%))",
+          }}
+          src={imgLogoClient}
+          alt="logo-client"
+        />
       </div>
       {/* hero text */}
-      <div className="text-white text-6xl drop-shadow-md font-bold uppercase">
+      <div
+        style={{
+          filter: "drop-shadow(2px 2px 3px rgb(0 0 0 /65%))",
+        }}
+        className="text-white text-6xl font-bold uppercase"
+      >
         Stories of freedom
       </div>
     </header>
