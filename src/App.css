@@ -1,1 +1,19 @@
- 
+/* app as scrolling container, to prevent scroll-bar related
+   content shift when modal backdrop is applied. kinda hacky */
+body {
+  overflow-y: hidden;
+}
+
+.animate-backdrop {
+  -webkit-animation: animate-backdrop 0.3s linear;
+  animation: animate-backdrop 0.3s linear;
+}
+
+@keyframes animate-backdrop {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -11,7 +11,8 @@ import Footer from "./Footer";
 function App() {
   return (
     <div
-      className="w-full bg-slate-50"
+      // fixed height, so <App /> becomes the scrollable container
+      className="w-full bg-slate-50 h-[100dvh] overflow-y-scroll"
       style={{
         "--primary-color": "#D05800",
         "--secondary-color": "#5C5646",
