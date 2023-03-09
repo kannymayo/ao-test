@@ -9,12 +9,13 @@ export default function StorySection({
   quoteAvatar,
 }) {
   return (
-    <section className="mx-64 p-2 flex flex-col gap-4">
+    <section className="lg:mx-48 2xl:mx-96 sm:mx-24 mx-6 p-2 flex flex-col gap-4">
       <a
         id={`section-${seq}`}
         className={`text-yellow-800 font-bold text-xl ${
+          // heading of first section gets special styling
           seq === 0
-            ? "px-20 text-center tracking-wide"
+            ? "lg:px-20 md:px-6 text-center tracking-wide"
             : "uppercase tracking-tight"
         }`}
       >
@@ -22,11 +23,11 @@ export default function StorySection({
       </a>
       {/* paragraphs with optional floating image */}
       {img ? (
-        <div className="">
+        <div className="flex flex-col sm:block">
           <img
             src={img}
             alt="paragraph-aside"
-            className="float-left m-4 mr-8 mb-0 sm:w-1/2 w-full "
+            className="sm:float-left sm:m-4 sm:mr-8 sm:mb-2 sm:w-1/2 lg:w-1/3"
           />
           {paragraphs.map((p, idx) => (
             // cannot use flex with gap, set individual margins
@@ -38,19 +39,19 @@ export default function StorySection({
       ) : (
         paragraphs.map((p, idx) => <p key={idx}>{p}</p>)
       )}
-      {/* block present if any of quote + quote avatar is present */}
+      {/* this block present if any of quote + quote avatar is present */}
       {quote || quoteAvatar ? (
-        <div className="flex justify-center items-center mx-12 gap-1 mt-8">
+        <div className="flex flex-col md:flex-row justify-center items-center mx-12 gap-1 mt-8">
           {/* quote avatar */}
           {quoteAvatar ? (
             <div className="shrink-0">
-              <img src={quoteAvatar} alt="story-avatar" className="w-28" />
+              <img src={quoteAvatar} alt="story-avatar" className="w-30" />
             </div>
           ) : null}
           {/* quote */}
           {quote ? (
             <>
-              <div className="self-start shrink-0">
+              <div className="self-start shrink-0 -mt-6 md:mt-0">
                 <img src={imgIconQuote} alt="" className="w-10" />
               </div>
               <span className="uppercase font-bold text-lg leading-5 text-yellow-800">

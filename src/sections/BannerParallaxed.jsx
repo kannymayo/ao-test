@@ -16,7 +16,7 @@ export default function BannerParallaxed({ imgSrc }) {
   const objectPosition = useMotionTemplate`50% ${scrollPercent}%`;
 
   return (
-    <div ref={refFeaturedBg} className="h-[14em] relative">
+    <div ref={refFeaturedBg} className="sm:h-[14em] h-[18em] relative">
       <motion.img
         style={{
           objectPosition,
@@ -25,7 +25,7 @@ export default function BannerParallaxed({ imgSrc }) {
         alt="featured-background"
         className="h-full w-full object-cover"
       />
-      <div className="text-white font-bold tracking-wider absolute right-1/4 top-1/4 w-1/4">
+      <div className="text-white font-bold tracking-wider p-8 sm:p-0 absolute right-0 bottom-0 sm:right-1/4 sm:top-1/4 w-full sm:w-1/3 lg:w-1/4">
         I am not going to be anyone's burden. So they are happy to have me on
         every trip. And many times, a woman can lead as well.
       </div>

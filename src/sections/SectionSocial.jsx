@@ -4,7 +4,7 @@ import imgIconTwitter from "../assets/icon-twitter.png";
 
 export default function SectionLeading() {
   return (
-    <section className="mx-64 p-2 pt-8 gap-10 flex flex-col">
+    <section className="lg:mx-48 2xl:mx-96 sm:mx-24 mx-6 p-2 pt-8 gap-10 flex flex-col">
       <div className="flex justify-center gap-2 w-full">
         <a href="" className="">
           <img className="w-6" src={imgIconWhatsapp} alt="whatsapp" />

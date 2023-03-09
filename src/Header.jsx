@@ -51,17 +51,17 @@ export default function Header() {
           style={{
             filter: "drop-shadow(2px 2px 3px rgb(0 0 0 /65%))",
           }}
-          className="text-white text-6xl font-bold uppercase"
+          className="text-white lg:text-6xl md:text-3xl text-xl font-bold uppercase"
         >
           Stories of freedom
         </div>
       </header>
       <Menu ref={ref}>
-        <div className="text-4xl text-white flex flex-col items-stretch justify-center h-full w-1/2 mx-auto">
+        <div className="text-2xl  text-white flex flex-col items-stretch justify-center h-full w-4/5 md:w-2/3 lg:w-1/2 xl:w-1/3 mx-auto">
           {headings.map((heading) => (
             <a
               onClick={handleCloseMenu}
-              className="text-left after:border after:block after:my-12 last:after:content-none"
+              className="text-left after:border after:block after:my-8 lg:after:my-12 last:after:content-none"
               key={heading.text}
               href={heading.link}
             >
