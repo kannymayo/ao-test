@@ -5,6 +5,8 @@
  */
 import story from "./story.json";
 import imgStoryAside from "../assets/story-aside.png";
+import imgStoryAvatar from "../assets/story-avatar.png";
 
-story[0].img = imgStoryAside;
+story[0].quoteAvatar = imgStoryAvatar;
+story[1].img = imgStoryAside;
 export default story;

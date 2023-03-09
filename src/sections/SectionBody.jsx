@@ -11,9 +11,12 @@ export default function Sections({
       return (
         <Fragment key={section.title}>
           <StorySection
+            seq={idx}
             title={section.title}
             paragraphs={section.paragraphs}
             img={section.img}
+            quote={section.quote}
+            quoteAvatar={section.quoteAvatar}
           />
           {children}
         </Fragment>
@@ -21,10 +24,13 @@ export default function Sections({
     else
       return (
         <StorySection
+          seq={idx}
           key={section.title}
           title={section.title}
           paragraphs={section.paragraphs}
           img={section.img}
+          quote={section.quote}
+          quoteAvatar={section.quoteAvatar}
         />
       );
   });
