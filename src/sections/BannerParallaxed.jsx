@@ -6,9 +6,10 @@ import {
   useMotionTemplate,
 } from "framer-motion";
 
-export default function BannerParallaxed({ imgSrc }) {
+export default function BannerParallaxed({ imgSrc, refScrollContainer }) {
   const refFeaturedBg = useRef(null);
   const { scrollYProgress: p } = useScroll({
+    container: refScrollContainer,
     target: refFeaturedBg,
     offset: ["start start", "end end"],
   });

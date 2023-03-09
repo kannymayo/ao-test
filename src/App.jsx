@@ -1,4 +1,5 @@
 import "./App.css";
+import { useRef } from "react";
 import imgStoryBg from "./assets/story-bg.png";
 import sections from "./content/story";
 import Header from "./Header";
@@ -9,10 +10,13 @@ import BannerParallaxed from "./sections/BannerParallaxed";
 import Footer from "./Footer";
 
 function App() {
+  const refScrollContainer = useRef(null);
+
   return (
     <div
       // fixed height, so <App /> becomes the scrollable container
       className="w-full bg-slate-50 h-[100dvh] overflow-y-scroll"
+      ref={refScrollContainer}
       style={{
         "--primary-color": "#D05800",
         "--secondary-color": "#5C5646",
@@ -26,7 +30,10 @@ function App() {
         <SectionQuote />
 
         <Sections sections={sections} childrenInjectedAfter={0}>
-          <BannerParallaxed imgSrc={imgStoryBg} />
+          <BannerParallaxed
+            imgSrc={imgStoryBg}
+            refScrollContainer={refScrollContainer}
+          />
         </Sections>
       </div>
       <Footer />
