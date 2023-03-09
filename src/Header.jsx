@@ -4,9 +4,14 @@ import imgHeroDesktop from "./assets/hero-desktop.png";
 import imgLogoClient from "./assets/logo-client.png";
 import imgLogoAsiaOne from "./assets/logo-asiaone.png";
 import Menu from "./Menu";
+import story from "./content/story";
 
 export default function Header() {
   const ref = useRef();
+  const headings = story.map((section, idx) => ({
+    text: section.title,
+    link: `#section-${idx}`,
+  }));
   return (
     <>
       <header
@@ -51,11 +56,27 @@ export default function Header() {
           Stories of freedom
         </div>
       </header>
-      <Menu ref={ref} />
+      <Menu ref={ref}>
+        <div className="text-4xl text-white flex flex-col items-stretch justify-center h-full w-1/2 mx-auto">
+          {headings.map((heading) => (
+            <a
+              onClick={handleCloseMenu}
+              className="text-left after:border after:block after:my-12 last:after:content-none"
+              key={heading.text}
+              href={heading.link}
+            >
+              {heading.text}
+            </a>
+          ))}
+        </div>
+      </Menu>
     </>
   );
 
   function handleOpenMenu() {
     ref.current.openMenu();
+  }
+  function handleCloseMenu() {
+    ref.current.closeMenu();
   }
 }

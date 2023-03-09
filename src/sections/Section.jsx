@@ -10,7 +10,8 @@ export default function StorySection({
 }) {
   return (
     <section className="mx-64 p-2 flex flex-col gap-4">
-      <div
+      <a
+        id={`section-${seq}`}
         className={`text-yellow-800 font-bold text-xl ${
           seq === 0
             ? "px-20 text-center tracking-wide"
@@ -18,14 +19,14 @@ export default function StorySection({
         }`}
       >
         {title}
-      </div>
+      </a>
       {/* paragraphs with optional floating image */}
       {img ? (
         <div className="">
           <img
             src={img}
             alt="paragraph-aside"
-            className="float-left m-4 mr-8 mb-0"
+            className="float-left m-4 mr-8 mb-0 sm:w-1/2 w-full "
           />
           {paragraphs.map((p, idx) => (
             // cannot use flex with gap, set individual margins

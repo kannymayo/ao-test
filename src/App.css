@@ -1,10 +1,14 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   overflow-y: scroll;
 }
 
 .animate-backdrop {
-  -webkit-animation: animate-backdrop 0.3s linear;
-  animation: animate-backdrop 0.3s linear;
+  -webkit-animation: animate-backdrop 0.2s linear;
+  animation: animate-backdrop 0.2s linear;
 }
 
 @keyframes animate-backdrop {

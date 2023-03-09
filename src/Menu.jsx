@@ -1,11 +1,12 @@
 import { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 import { RxCross1 } from "react-icons/rx";
 
-function Menu(props, ref) {
+function Menu({ children }, ref) {
   const [isOpen, setIsOpen] = useState(false);
 
   useImperativeHandle(ref, () => ({
     openMenu: () => setIsOpen(true),
+    closeMenu: () => setIsOpen(false),
   }));
 
   // disable scroll when menu is open, and compensate for scrollbar width
@@ -38,6 +39,7 @@ function Menu(props, ref) {
         }}
         className="fixed cursor-pointer hover:scale-105 hover:text-white text-4xl right-11 top-4 text-slate-200 transition-all duration-500"
       />
+      {children}
     </div>
   );
 }
