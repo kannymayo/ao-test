@@ -20,7 +20,7 @@ export default function Header() {
           backgroundSize: "cover",
           backgroundPosition: "center top",
         }}
-        className="h-[50vh] relative flex items-center justify-center flex-col gap-6 border-b-8 border-zinc-200"
+        className="sm:h-[50dvh] h-[100dvh] box-content min-h-[20rem]  relative flex items-center justify-center flex-col gap-6 border-b-8 border-zinc-200"
       >
         {/* AsiaOne logo */}
         <div className="absolute top-2 left-2 w-12">
