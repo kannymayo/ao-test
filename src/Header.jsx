@@ -8,7 +8,7 @@ import {
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useMediaQuery } from "./hooks/useMediaQuery";
 import imgHeroDesktop from "./assets/hero-desktop.png";
-import imgLogoClient from "./assets/logo-client.png";
+import imgLogoClient from "./assets/logo-client.svg";
 import imgLogoAsiaOne from "./assets/logo-asiaone.png";
 import Menu from "./Menu";
 import story from "./content/story";
@@ -41,7 +41,7 @@ export default function Header() {
             ? backgroundPositionMobile
             : backgroundPosition,
         }}
-        className="sm:h-[50lvh] h-[100lvh] box-content min-h-[20rem]  relative flex items-center justify-center flex-col gap-6 border-b-8 border-zinc-200"
+        className="sm:h-[50lvh] h-[100lvh] box-content min-h-[20rem]  relative flex items-center justify-center flex-col gap-6 border-b-8 border-[var(--hero-border-color)]"
       >
         {/* AsiaOne logo */}
         <div className="absolute top-2 left-2 w-12">
@@ -54,18 +54,19 @@ export default function Header() {
             mixBlendMode: "difference",
           }}
           onClick={handleOpenMenu}
-          className="fixed top-3 right-6 cursor-pointer"
+          className="fixed top-3 right-6 cursor-pointer z-40"
         >
           <RxHamburgerMenu className="text-slate-50" size="2.2em" />
         </a>
 
         {/* Logo */}
-        <div className="w-26">
+        <div className="w-26 md:w-32">
           <img
             style={{
               filter: "drop-shadow(0px 0px 3px rgb(0 0 0 /100%))",
             }}
             src={imgLogoClient}
+            className="object-contain w-full h-full"
             alt="logo-client"
           />
         </div>

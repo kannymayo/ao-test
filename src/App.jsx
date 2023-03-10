@@ -15,6 +15,8 @@ function App() {
       style={{
         "--primary-color": "#D05800",
         "--secondary-color": "#5C5646",
+        "--gray-color": "#C8C5BD",
+        "--hero-border-color": "#D9D9D9",
       }}
     >
       <Header />

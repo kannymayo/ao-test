@@ -1,4 +1,4 @@
-import imgIconQuote from "../assets/icon-quote.png";
+import imgIconQuote from "../assets/icon-quote.svg";
 
 export default function StorySection({
   seq,
@@ -46,8 +46,8 @@ export default function StorySection({
         <div className="flex flex-col md:flex-row justify-center items-center md:mx-12 mx-4 gap-1 mt-8">
           {/* quote avatar */}
           {quoteAvatar ? (
-            <div className="shrink-0">
-              <img src={quoteAvatar} alt="story-avatar" className="w-30" />
+            <div className="shrink-0 rounded-full border-8 border-[var(--gray-color)] overflow-hidden">
+              <img src={quoteAvatar} alt="story-avatar" className="w-32" />
             </div>
           ) : null}
           {/* quote */}
