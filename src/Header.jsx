@@ -1,5 +1,12 @@
 import { useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionTemplate,
+} from "framer-motion";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { useMediaQuery } from "./hooks/useMediaQuery";
 import imgHeroDesktop from "./assets/hero-desktop.png";
 import imgLogoClient from "./assets/logo-client.png";
 import imgLogoAsiaOne from "./assets/logo-asiaone.png";
@@ -7,20 +14,34 @@ import Menu from "./Menu";
 import story from "./content/story";
 
 export default function Header() {
-  const ref = useRef();
+  const isMobile = useMediaQuery("(max-width: 640px)");
+  const refMenu = useRef();
   const headings = story.map((section, idx) => ({
     text: section.title,
     link: `#section-${idx}`,
   }));
+  const refScrollTarget = useRef();
+  const { scrollYProgress: p } = useScroll({
+    target: refScrollTarget,
+    offset: ["start start", "end start"],
+  });
+  const scrollPercent = useTransform(p, [0, 1], [0, 100]);
+  const scrollPercentMobile = useTransform(p, [0.25, 1], [20, 40]);
+  const backgroundPosition = useMotionTemplate`50% ${scrollPercent}%`;
+  const backgroundPositionMobile = useMotionTemplate`${scrollPercentMobile}% 50%`;
+
   return (
     <>
-      <header
+      <motion.header
+        ref={refScrollTarget}
         style={{
           backgroundImage: `url(${imgHeroDesktop})`,
           backgroundSize: "cover",
-          backgroundPosition: "center top",
+          backgroundPosition: isMobile
+            ? backgroundPositionMobile
+            : backgroundPosition,
         }}
-        className="sm:h-[50dvh] h-[100dvh] box-content min-h-[20rem]  relative flex items-center justify-center flex-col gap-6 border-b-8 border-zinc-200"
+        className="sm:h-[50lvh] h-[100lvh] box-content min-h-[20rem]  relative flex items-center justify-center flex-col gap-6 border-b-8 border-zinc-200"
       >
         {/* AsiaOne logo */}
         <div className="absolute top-2 left-2 w-12">
@@ -28,13 +49,15 @@ export default function Header() {
         </div>
 
         {/* Nav Menu */}
-        <div className="absolute top-3 right-6 cursor-pointer">
-          <RxHamburgerMenu
-            onClick={handleOpenMenu}
-            className="text-slate-600"
-            size="2.2em"
-          />
-        </div>
+        <a
+          style={{
+            mixBlendMode: "difference",
+          }}
+          onClick={handleOpenMenu}
+          className="fixed top-3 right-6 cursor-pointer"
+        >
+          <RxHamburgerMenu className="text-slate-50" size="2.2em" />
+        </a>
 
         {/* Logo */}
         <div className="w-26">
@@ -55,8 +78,8 @@ export default function Header() {
         >
           Stories of freedom
         </div>
-      </header>
-      <Menu ref={ref}>
+      </motion.header>
+      <Menu ref={refMenu}>
         <div className="text-2xl  text-white flex flex-col items-stretch justify-center h-full w-4/5 md:w-2/3 lg:w-1/2 xl:w-1/3 mx-auto">
           {headings.map((heading) => (
             <a
@@ -74,9 +97,9 @@ export default function Header() {
   );
 
   function handleOpenMenu() {
-    ref.current.openMenu();
+    refMenu.current.openMenu();
   }
   function handleCloseMenu() {
-    ref.current.closeMenu();
+    refMenu.current.closeMenu();
   }
 }

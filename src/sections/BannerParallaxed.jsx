@@ -1,34 +1,41 @@
 import { useRef } from "react";
 import {
   motion,
+  easeOut,
   useScroll,
   useTransform,
   useMotionTemplate,
 } from "framer-motion";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 
 export default function BannerParallaxed({ imgSrc }) {
+  const isMobile = useMediaQuery("(max-width: 640px)");
   const refFeaturedBg = useRef(null);
   const { scrollYProgress: p } = useScroll({
     target: refFeaturedBg,
     offset: ["start start", "end end"],
   });
-  const scrollPercent = useTransform(p, [0, 0.3, 0.7, 1], [0, 10, 90, 100]);
+  const scrollPercent = useTransform(p, [0, 1], [0, 100], {
+    ease: easeOut,
+  });
+  const scrollPercentMobile = useTransform(p, [0, 1], [10, 25]);
   const objectPosition = useMotionTemplate`50% ${scrollPercent}%`;
+  const objectPositionMobile = useMotionTemplate`${scrollPercentMobile}% 50%`;
 
   return (
-    <div ref={refFeaturedBg} className="sm:h-[14em] h-[18em] relative">
-      <motion.img
-        style={{
-          objectPosition,
-        }}
-        src={imgSrc}
-        alt="featured-background"
-        className="h-full w-full object-cover"
-      />
-      <div className="text-white font-bold tracking-wider p-8 sm:p-0 absolute right-0 bottom-0 sm:right-1/4 sm:top-1/4 w-full sm:w-1/3 lg:w-1/4">
+    <motion.div
+      style={{
+        backgroundImage: `url(${imgSrc})`,
+        backgroundSize: "cover",
+        backgroundPosition: isMobile ? objectPositionMobile : objectPosition,
+      }}
+      ref={refFeaturedBg}
+      className="sm:h-[14em] h-[18em] flex items-end justify-end p-12 lg:pr-64"
+    >
+      <div className="text-white font-bold tracking-wide sm:w-1/2 md:w-1/3 lg:w-1/4">
         I am not going to be anyone's burden. So they are happy to have me on
         every trip. And many times, a woman can lead as well.
       </div>
-    </div>
+    </motion.div>
   );
 }

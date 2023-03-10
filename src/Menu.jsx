@@ -29,16 +29,17 @@ function Menu({ children }, ref) {
 
   return (
     <div
-      className={`animate-backdrop pointer-events-auto fixed inset-0 bg-stone-900 opacity-90 ${
+      className={`animate-backdrop pointer-events-auto fixed inset-0 z-40 bg-stone-900 opacity-90 ${
         isOpen ? "block" : "hidden"
       }`}
     >
-      <RxCross1
+      <a
         onClick={() => {
           setIsOpen(false);
         }}
-        className="fixed cursor-pointer hover:scale-105 hover:text-white text-4xl right-11 top-4 text-slate-200 transition-all duration-500"
-      />
+      >
+        <RxCross1 className="fixed cursor-pointer hover:scale-105 hover:text-white text-6xl right-11 top-6 text-slate-200 transition-all duration-500" />
+      </a>
       {children}
     </div>
   );
