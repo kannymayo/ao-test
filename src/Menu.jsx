@@ -27,6 +27,17 @@ function Menu({ children }, ref) {
     };
   }, [isOpen]);
 
+  // close menu on escape key
+  useEffect(() => {
+    const close = (e) => {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
+  }, []);
+
   return (
     <div
       className={`animate-backdrop pointer-events-auto fixed inset-0 z-40 bg-stone-900 opacity-90 ${
